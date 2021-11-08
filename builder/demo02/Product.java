@@ -46,5 +46,15 @@ public class Product {
     public void setBuildD(String buildD) {
         BuildD = buildD;
     }
+    
+     @Override
+    public String toString() {
+        return "Product{" +
+                "BuildA='" + BuildA + '\'' +
+                ", BuildB='" + BuildB + '\'' +
+                ", BuildC='" + BuildC + '\'' +
+                ", BuildD='" + BuildD + '\'' +
+                '}';
+    }
 
 }
