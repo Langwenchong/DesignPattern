@@ -1,18 +1,18 @@
-package homework01.demo06;
+package homework02.demo06;
 
 /**
  * @Author Lang wenchong
- * @Date 2021/10/24 18:40
+ * @Date 2021/11/1 17:59
  * @Version 1.0
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("检测两个实例是否在同一个存储单元");
-        VirtualAccount va1=VirtualAccount.getInstance();
-        VirtualAccount va2=VirtualAccount.getInstance();
-        System.out.println(va1);
-        System.out.println(va2);
-        System.out.println("两个单例是否在同一个存储单元？"+(va1==va2));
-        System.out.println("如果上面返还是true则测试成功");
+        AccountFactory factory = AccountFactory.getInstance();
+        Account account1 = factory.getPermission("01");
+        account1.display("张三");
+        Account account2 = factory.getPermission("02");
+        account2.display("李四");
+        Account account3 = factory.getPermission("03");
+        account3.display("王五");
     }
 }
