@@ -1,18 +1,28 @@
-package homework02.demo06;
+package homework03.demo06;
 
 /**
  * @Author Lang wenchong
- * @Date 2021/11/1 17:59
+ * @Date 2021/11/4 9:47
  * @Version 1.0
  */
 public class Test {
     public static void main(String[] args) {
-        AccountFactory factory = AccountFactory.getInstance();
-        Account account1 = factory.getPermission("01");
-        account1.display("张三");
-        Account account2 = factory.getPermission("02");
-        account2.display("李四");
-        Account account3 = factory.getPermission("03");
-        account3.display("王五");
+        Note note = new Note();
+        note.setMsg("翀翀好帅");
+        Application application = new Application(note);
+        APPStateCaretaker appStateCaretaker = new APPStateCaretaker();
+        appStateCaretaker.saveMemento(application.saveState());
+        application.getNote().setMsg("翀翀好萌");
+        appStateCaretaker.saveMemento(application.saveState());
+        application.getNote().setMsg("翀翀好丑");
+        application.recoverState(appStateCaretaker.getBack());
+        System.out.println(application.getNote().getMsg());
+        application.recoverState(appStateCaretaker.getBack());
+        System.out.println(application.getNote().getMsg());
+        application.recoverState(appStateCaretaker.getFront());
+        System.out.println(application.getNote().getMsg());
+        application.recoverState(appStateCaretaker.getFront());
+        System.out.println(application.getNote().getMsg());
     }
 }
+

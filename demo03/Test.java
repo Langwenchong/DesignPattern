@@ -1,34 +1,31 @@
-package homework02.demo03;
+package homework03.demo03;
 
 /**
  * @Author Lang wenchong
- * @Date 2021/11/1 15:43
+ * @Date 2021/11/3 21:54
  * @Version 1.0
  */
 public class Test {
     public static void main(String[] args) {
-        Component group1 = new Group("Group1");
-        Component member1 = new Member("member1");
-        Component member2 = new Member("member2");
-        Component member3 = new Member("member3");
-        Component member4 = new Member("member4");
+        DBMS dbms1 = new DBMS("数据库1");
+        DBMS dbms2 = new DBMS("数据库2");
 
-        group1.add(member1);
-        group1.add(member2);
-        group1.add(member3);
-        group1.add(member4);
+        dbms1.addView(new View(1, "视图1"));
+        dbms1.addView(new View(2, "视图2"));
+        dbms1.addView(new View(3, "视图3"));
 
-        System.out.println(((Member) member1).getName() + "分享了一条新动态");
-        member1.share(group1);
+        dbms1.addStudents(new Student(1, "张三"));
+        dbms1.addStudents(new Student(2, "李四"));
+        dbms1.addStudents(new Student(3, "王五"));
+        dbms1.addStudents(new Student(4, "赵六"));
 
-        System.out.println("---------------------------");
-
-        Component group2 = new Group("group2");
-        group2.add(group1);
-        Component member5 = new Member("member5");
-        group2.add(member5);
-        System.out.println(((Member) member5).getName() + "分享了一条新动态");
-        member5.share(group2);
-
+        CopyView copyView = new CopyView();
+        copyView.interpret(dbms1, dbms2);
+        dbms1.printView();
+        dbms2.printView();
+        MoveStudents moveStudents = new MoveStudents();
+        moveStudents.interpret(dbms1, dbms2);
+        dbms1.printStudents();
+        dbms2.printStudents();
     }
 }
