@@ -17,6 +17,6 @@ public class Consumer {
         //同时这里也体现了链式变成的特点
         Product product = worker.buildA("上校鸡块").buildB("咖啡").getProduct();
         //输出套餐信息
-        product.toString();
+        System.out.println(product.toString());
     }
 }
